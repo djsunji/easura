@@ -30,8 +30,8 @@ assets/css/base.css     Grund-Reset
 assets/css/style.css    Design (Farben, Layout, Tag/Nacht)
 assets/js/i18n.js       Alle Texte in DE, FR, IT, EN
 assets/js/app.js        App-Logik (Erkennung, Übersicht, Registrierung, Angebote)
-assets/js/logos.js      Zuordnung Firmenname → Logo-Datei
-assets/img/             easura-Logo und Partner-Logos
+assets/js/logos.js      Logos der Versicherer und Banken (eingebettet)
+assets/img/             easura-Logo
 tessdata/               Optional: eigene OCR-Sprachdaten
 ```
 
@@ -50,7 +50,7 @@ python3 -m http.server 8000
 ## Mit GitHub Pages veröffentlichen
 
 1. Neues Repository auf GitHub erstellen, z.B. `easura`.
-2. Den Inhalt dieses Ordners hochladen (oder per `git push`).
+2. Auf der Repository-Seite **Add file → Upload files** wählen und den **Inhalt** des Ordners `easura` hineinziehen (`index.html`, `README.md`, `.gitignore` und die Ordner `assets` und `tessdata`). Es sind nur rund 10 Dateien, das passt in einen Upload.
 3. Auf GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, Branch `main`, Ordner `/ (root)`.
 4. Nach ca. einer Minute ist die Seite unter `https://<dein-name>.github.io/easura/` erreichbar.
 
@@ -73,7 +73,7 @@ git push -u origin main
 
 ## Wichtige Hinweise vor einem öffentlichen Start
 
-- **Logos von Versicherern und Banken** (`assets/img/partners/`): Die Markenrechte liegen bei den jeweiligen Firmen. Einige der aktuellen Bilder sind KI-generierte Annäherungen und weichen von den Originalen ab. Vor einem öffentlichen Start durch die offiziellen Logo-Dateien ersetzen und die Nutzung mit den Firmen abklären.
+- **Logos von Versicherern und Banken** (`assets/js/logos.js`): Die Markenrechte liegen bei den jeweiligen Firmen. Einige der aktuellen Bilder sind KI-generierte Annäherungen und weichen von den Originalen ab. Vor einem öffentlichen Start durch die offiziellen Logo-Dateien ersetzen und die Nutzung mit den Firmen abklären.
 - **Markenname:** «easura» ist sehr ähnlich zum Krankenversicherer «Assura». Vor dem Start im Markenregister (Swissreg) prüfen lassen.
 - **Datenschutz (revDSG):** Eine Datenschutzerklärung fehlt noch. Sie muss erklären, welche Daten wo verarbeitet werden.
 - **Angebote** in der Angebotsleiste sind erfundene Beispiele und als solche markiert.
