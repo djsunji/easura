@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>easura</title>
+<meta name="description" content="easura – lade deine Versicherungspolicen hoch und sieh auf einen Blick, was aktiv ist und was fehlt.">
+<link rel="icon" type="image/webp" href="assets/img/logo-e.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="easura">
+      <img class="logo" src="assets/img/logo-e.webp" alt="" width="240" height="222">
+      <span class="word">easura</span>
+    </a>
+    <div class="top-r">
+      <span class="tagline" id="tagline">Versicherung.<br><em>Einfach gemacht.</em></span>
+      <div class="theme" role="group" aria-label="Darstellung" data-i18n-aria="theme_group">
+        <button type="button" class="th-b" id="th-light" aria-pressed="false" title="Tagmodus" aria-label="Tagmodus" data-i18n-title="day" data-i18n-aria="day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><span>Tag</span></button>
+        <button type="button" class="th-b" id="th-dark" aria-pressed="false" title="Nachtmodus" aria-label="Nachtmodus" data-i18n-title="night" data-i18n-aria="night"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg><span>Nacht</span></button>
+      </div>
+      <label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>
+        <select id="lang" aria-label="Sprache" data-i18n-aria="lang_label"><option value="de" title="Deutsch">DE</option><option value="fr" title="Français">FR</option><option value="it" title="Italiano">IT</option><option value="en" title="English">EN</option></select></label>
+      <button class="btn reg" type="button" id="reg-btn">Registrieren</button>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="h1">
+    <div>
+      <h1 id="h1">Hallo!</h1>
+      <div class="me" id="hero-me" hidden></div>
+      <p class="lead" data-i18n="lead">Versicherungen sind kompliziert, deine Übersicht muss es nicht sein. easura zeigt dir in Minuten, welche Versicherungen du hast, was sie kosten und wo dir noch etwas fehlt.</p>
+      <ol class="steps">
+        <li><b data-i18n="s1b">Police hochladen</b><span data-i18n="s1s">PDF oder Foto, gerne mehrere aufs Mal.</span></li>
+        <li><b data-i18n="s2b">Automatisch erkennen</b><span data-i18n="s2s">Versicherer, Art, Prämie und Laufzeit.</span></li>
+        <li><b data-i18n="s3b">Lücken sehen</b><span data-i18n="s3s">Was du hast, was fehlt und was du dir sparen kannst.</span></li>
+      </ol>
+      <p class="hint" data-i18n="hint">Jede Versicherung wird in einfachen Worten erklärt, ohne Fachchinesisch. Ideal, wenn du gerade ausziehst, die Lehre beginnst oder zum ersten Mal selbst Prämien zahlst.</p>
+      <div class="stats">
+        <div class="kpi-total">
+          <div class="kt-main"><span class="kt-l" data-i18n="prem_year">Deine Prämien pro Jahr</span><span class="kt-v num" id="st-premium">–</span></div>
+          <div class="kt-side"><span class="kt-m num" id="st-month">–</span><span class="kt-l" data-i18n="per_month">pro Monat</span></div>
+        </div>
+        <a class="kpi good" href="#grp-ok"><span class="kpi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="kpi-t"><span class="kpi-v num" id="st-active">0</span><span class="kpi-l">Aktive Versicherungen</span></span></a>
+        <a class="kpi bad" href="#grp-open"><span class="kpi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg></span><span class="kpi-t"><span class="kpi-v num" id="st-open">0</span><span class="kpi-l">Offene Punkte</span></span></a>
+      </div>
+    </div>
+    <div class="ring" role="img" id="ring" aria-label="Abdeckung">
+      <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--grey-soft)" stroke-width="10"/>
+        <circle id="ring-arc" cx="60" cy="60" r="50" fill="none" stroke="url(#ringg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 400"/>
+        <defs><linearGradient id="ringg" x1="0" x2="1"><stop offset="0" stop-color="#1664FF"/><stop offset="1" stop-color="#39D5D0"/></linearGradient></defs></svg>
+      <div class="c"><b class="num" id="ring-num">0/0</b><span data-i18n-html="ring_html">wichtige<br>abgedeckt</span></div>
+    </div>
+  </section>
+
+  <div class="banner" id="banner" hidden>
+    <span data-i18n-html="banner_html"><b>Beispieldaten.</b> So sieht deine Übersicht aus. Sobald du deine erste Police hochlädst, verschwinden die Beispiele.</span>
+    <button type="button" id="clear-examples" data-i18n="clear_examples">Beispiele entfernen</button>
+  </div>
+
+  <section aria-labelledby="up-h">
+    <div class="drop" id="drop">
+      <svg class="up-ico" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg>
+      <h2 id="up-h" data-i18n="upload_h">Police hochladen</h2>
+      <div class="staged" id="staged" hidden>
+        <ul id="staged-list"></ul>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="pick" data-i18n="pick">Datei auswählen</button>
+        <button class="btn go" type="button" id="go" hidden>Hochladen und prüfen</button>
+      </div>
+      <input type="file" id="file" accept="application/pdf,.pdf,image/jpeg,image/png,image/webp" multiple hidden>
+    </div>
+  </section>
+
+  <div class="jobs" id="jobs" aria-live="polite"></div>
+
+  <section class="promo" id="promo" aria-roledescription="Karussell" aria-label="Sonderangebote" data-i18n-aria="promo_aria" data-i18n-role="carousel">
+    <div class="promo-track" id="promo-track"></div>
+    <div class="promo-nav">
+      <button type="button" class="pn" id="promo-prev" aria-label="Vorheriges Angebot" data-i18n-aria="promo_prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <div class="dots" id="promo-dots"></div>
+      <button type="button" class="pn" id="promo-next" aria-label="Nächstes Angebot" data-i18n-aria="promo_next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="prof-h">
+    <div class="section-h"><h2 id="prof-h" data-i18n="prof_h">Das trifft auf mich zu</h2><span class="muted" style="font-size:13px" data-i18n="prof_sub">passt die Empfehlungen an</span></div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section aria-labelledby="list-h">
+    <div class="section-h"><h2 id="list-h" data-i18n="list_h">Deine Versicherungen</h2><button class="linkbtn danger" type="button" id="reset" hidden>Alles löschen</button></div>
+    <div id="list" class="group"></div>
+  </section>
+
+  <footer class="foot">
+    <div class="claim" data-i18n-html="foot_html">Schnell. Einfach. <i>Übersichtlich.</i></div>
+    <div data-i18n="foot_note">easura ist ein Prototyp und keine Versicherungsberatung. Automatisch erkannte Angaben können fehlerhaft sein, prüfe sie mit deiner Police.</div>
+  </footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+<div class="modal" id="reg" hidden role="dialog" aria-modal="true" aria-labelledby="reg-h">
+  <form class="sheet" id="reg-form" novalidate>
+    <div class="sheet-h"><h2 id="reg-h">Profil erstellen</h2><button class="x" type="button" id="reg-close" aria-label="Schliessen" data-i18n-aria="close">×</button></div>
+    <div id="step1" class="step1">
+      <p class="sheet-note" data-i18n="step1_note">Erstelle dein Konto in wenigen Sekunden. Danach fragen wir kurz ein paar Angaben für deine Versicherungsprüfung ab.</p>
+      <div class="sso">
+        <button type="button" class="sso-b" data-sso="Apple">Weiter mit Apple</button>
+        <button type="button" class="sso-b" data-sso="Google">Weiter mit Google</button>
+        <button type="button" class="sso-b" data-sso="Microsoft">Weiter mit Microsoft</button>
+        <button type="button" class="sso-b" data-sso="Facebook">Weiter mit Facebook</button>
+      </div>
+      <div class="or"><span data-i18n="or_mail">oder mit E-Mail</span></div>
+      <div class="fgrid two">
+        <label class="full"><span data-i18n="email">E-Mail</span><input type="email" id="a-mail" autocomplete="email" placeholder="name@beispiel.ch" data-i18n-ph="email_ph"></label>
+        <label><span data-i18n="pw">Passwort</span><input type="password" id="a-pw" autocomplete="new-password" placeholder="mind. 8 Zeichen" data-i18n-ph="pw_ph"></label>
+        <label><span data-i18n="pw2">Passwort wiederholen</span><input type="password" id="a-pw2" autocomplete="new-password"></label>
+      </div>
+      <p class="sheet-err" id="a-err" hidden></p>
+      <div class="sheet-f"><span style="flex:1"></span><button class="btn" type="button" id="a-next" data-i18n="mail_reg">Mit E-Mail registrieren</button></div>
+      <p class="sheet-note small" data-i18n="step1_proto">Prototyp: Die Anmeldung mit Apple, Google, Microsoft und Facebook sowie das Passwort werden aktiv, sobald easura einen eigenen Server hat. Bis dahin kannst du den Ablauf hier schon durchspielen.</p>
+    </div>
+    <div id="step2" class="step2">
+    <p class="sheet-note via" id="reg-via" hidden></p>
+    <p class="sheet-note" id="reg-note">Mit diesen Angaben prüfen wir, welche Versicherungen für dich Pflicht sind, welche sich lohnen und welche du dir sparen kannst.</p>
+    <fieldset><legend data-i18n="lg_personal">Persönliche Angaben</legend><div class="fgrid">
+      <label><span data-i18n="f_first">Vorname*</span><input type="text" id="r-first" autocomplete="given-name" required></label>
+      <label><span data-i18n="f_last">Nachname*</span><input type="text" id="r-last" autocomplete="family-name" required></label>
+      <label><span data-i18n="f_mail">E-Mail*</span><input type="email" id="r-mail" autocomplete="email" required></label>
+      <label><span data-i18n="f_phone">Telefon</span><input type="tel" id="r-phone" autocomplete="tel" placeholder="optional" data-i18n-ph="optional"></label>
+      <label><span data-i18n="f_birth">Geburtsdatum*</span><input type="date" id="r-birth" required></label>
+      <label><span data-i18n="f_civil">Zivilstand</span><select id="r-civil"><option value="" data-i18n="choose">bitte wählen</option><option value="ledig" data-i18n="c_single">ledig</option><option value="verheiratet" data-i18n="c_married">verheiratet / eingetragene Partnerschaft</option><option value="konkubinat" data-i18n="c_cohab">Konkubinat</option><option value="geschieden" data-i18n="c_div">geschieden / getrennt</option><option value="verwitwet" data-i18n="c_wid">verwitwet</option></select></label>
+    </div></fieldset>
+    <fieldset><legend data-i18n="lg_home">Wohnort</legend><div class="fgrid">
+      <label class="span2"><span data-i18n="f_street">Strasse und Nr.</span><input type="text" id="r-street" autocomplete="street-address"></label>
+      <label><span data-i18n="f_zip">PLZ*</span><input type="text" id="r-zip" inputmode="numeric" maxlength="4" autocomplete="postal-code" required></label>
+      <label><span data-i18n="f_city">Ort*</span><input type="text" id="r-city" autocomplete="address-level2" required></label>
+      <label><span data-i18n="f_canton">Kanton*</span><select id="r-canton" required></select></label>
+      <label><span data-i18n="f_home">Wohnsituation*</span><select id="r-home" required><option value="" data-i18n="choose">bitte wählen</option><option value="eltern" data-i18n="h_eltern">Bei den Eltern</option><option value="miete" data-i18n="h_miete">Eigene Mietwohnung</option><option value="wg" data-i18n="h_wg">WG</option><option value="eigentum" data-i18n="h_eigentum">Wohneigentum</option></select></label>
+    </div></fieldset>
+    <fieldset><legend data-i18n="lg_life">Lebenssituation</legend><div class="fgrid">
+      <label class="span2"><span data-i18n="f_work">Beschäftigung*</span><select id="r-work" required><option value="" data-i18n="choose">bitte wählen</option><option value="ag8" data-i18n="w_ag8">Angestellt, mind. 8 Std. pro Woche</option><option value="lehre" data-i18n="w_lehre">In der Lehre</option><option value="ag" data-i18n="w_ag">Angestellt, weniger als 8 Std. pro Woche</option><option value="studium" data-i18n="w_studium">Studium oder Schule</option><option value="selbst" data-i18n="w_selbst">Selbständig</option><option value="ohne" data-i18n="w_ohne">Nicht erwerbstätig</option></select></label>
+      <label><span data-i18n="f_car">Fahrzeug</span><select id="r-car"><option value="kein" data-i18n="v_kein">Keins</option><option value="auto" data-i18n="v_auto">Auto</option><option value="moto" data-i18n="v_moto">Motorrad oder Roller</option><option value="beides" data-i18n="v_beides">Auto und Motorrad</option></select></label>
+      <label><span data-i18n="f_pet">Haustier</span><select id="r-pet"><option value="kein" data-i18n="p_kein">Keins</option><option value="hund" data-i18n="p_hund">Hund</option><option value="katze" data-i18n="p_katze">Katze</option><option value="anderes" data-i18n="p_anderes">Anderes</option></select></label>
+      <label><span data-i18n="f_kids">Kinder</span><select id="r-kids"><option value="nein" data-i18n="no">Nein</option><option value="ja" data-i18n="yes">Ja</option></select></label>
+      <label><span data-i18n="f_franchise">Franchise Krankenkasse</span><select id="r-franchise"><option value="" data-i18n="dunno">weiss nicht</option><option>300</option><option>500</option><option>1000</option><option>1500</option><option>2000</option><option>2500</option></select></label>
+    </div></fieldset>
+    <label class="consent"><input type="checkbox" id="r-ok" required><span data-i18n="consent">Ich bin einverstanden, dass easura meine Angaben für die Überprüfung meiner Versicherungen verwendet.*</span></label>
+    <p class="sheet-err" id="reg-err" hidden></p>
+    <p class="sheet-note small" data-i18n="reg_proto">Prototyp: Dein Profil wird nur in diesem Browser gespeichert und nirgends hin gesendet. Für ein Konto mit Login braucht es später einen eigenen Server.</p>
+    <div class="sheet-f"><button class="linkbtn danger" type="button" id="reg-del" hidden>Profil löschen</button><span style="flex:1"></span><button class="btn ghost" type="button" id="reg-cancel" data-i18n="cancel">Abbrechen</button><button class="btn" type="submit" id="reg-save" data-i18n="save_profile">Profil speichern</button></div>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script>
+  /* Optional: eigene Tesseract-Sprachdaten hosten, z.B. "tessdata". Leer lassen = Standardquelle von tesseract.js. */
+  window.EASURA_TESSDATA = window.EASURA_TESSDATA || "";
+</script>
+<script src="assets/js/logos.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
